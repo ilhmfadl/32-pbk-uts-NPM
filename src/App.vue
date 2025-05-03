@@ -21,9 +21,17 @@ const todos = ref([
   { id: id++, text: 'Sholat isya' }
 ])
 
+function addTodo() {
+  todos.value.push({ id: id++, text: newTodo.value })
+  newTodo.value = ''
+}
 </script>
 
 <template>
+  <form @submit.prevent="addTodo">
+    <input v-model="newTodo" required placeholder="Tambah kegiatan...">
+    <button>Tambah</button>
+  </form>
   <ul>
     <li v-for="todo in todos" :key="todo.id">
       {{ todo.text }}
