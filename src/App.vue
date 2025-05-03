@@ -38,8 +38,11 @@ function removeTodo(todo) {
   </form>
   <ul>
     <li v-for="todo in todos" :key="todo.id">
-      {{ todo.text }}
-      <button @click="removeTodo(todo)">X</button>
+      <label>
+        <input type="checkbox" v-model="todo.done" />
+          {{ todo.text }}
+        <button @click="removeTodo(todo)">X</button>
+      </label>
     </li>
   </ul>
 </template>
